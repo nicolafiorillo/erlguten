@@ -28,7 +28,7 @@
 
 -module(eg_pdf_image).
 
-%% Purpose: Import images from file, currently jpg only 
+%% Purpose: Import images from file, currently jpg only
 %%          Pack into XObjects
 %% 
 
@@ -38,6 +38,7 @@
         get_png_content/1,
         deflate_stream/1,
         inflate_stream/1]).
+-compile(nowarn_export_all).
 -compile(export_all).
 -include("../include/eg.hrl").
 
@@ -488,7 +489,7 @@ filter(X,A,B,C, Method) ->
     0 -> X;
     1 -> (X + A) rem 256;
     2 -> (X + B) rem 256;
-    3 -> (X + floor( (A + B)/2) ) rem 256;
+    3 -> (X + pdf_floor( (A + B)/2) ) rem 256;
     4 -> (X + paethPredictor(A,B,C)) rem 256
   end.
 
@@ -530,7 +531,7 @@ deflate_stream(Data) ->
   {ok,Compressed}.
   
   
-floor(X) ->
+pdf_floor(X) ->
     T = erlang:trunc(X),
     case (X - T) of
         Neg when Neg < 0 -> T - 1;

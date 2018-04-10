@@ -145,7 +145,7 @@ table(PDF, Rows, X, Width, Start, Bottom, FontSize,FontChoice) ->
                       [Min_tab_width div Cols + Cols]);
        true -> ok
     end,
-    _Text_width = Col_width - 4 - 1, % leave space for lines + ws
+    _ = Col_width - 4 - 1, % leave space for lines + ws %% text width
 
     %% Sum the total length of text in each column. This gives a
     %% general measure of the size of a column.
