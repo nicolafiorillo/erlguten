@@ -134,9 +134,9 @@ xml(5) -> "<p>is <red>AWAY</red> correctly kerned? Erlang terms
 xml(title) ->
     "<p>This page tests justification routines</p>".
 
-norm() -> "(This is normal text, with some **emphasised code**, I have
-    also some *cursive text* and an example of and Erlang term. The
-    term <{person, \"Joe\"}> is an Erlang term.  The variable <X>, was
-    immediately followed by a comma.)".
+% norm() -> "(This is normal text, with some **emphasised code**, I have
+%     also some *cursive text* and an example of and Erlang term. The
+%     term <{person, \"Joe\"}> is an Erlang term.  The variable <X>, was
+%     immediately followed by a comma.)".
 
 

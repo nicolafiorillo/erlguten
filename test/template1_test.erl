@@ -1,6 +1,7 @@
 -module (template1_test).
 -include("eg.hrl").
 -include_lib("eunit/include/eunit.hrl").
+-compile(nowarn_unused_function).
 
 run_test() ->
   ?debugMsg("Begin Test"),

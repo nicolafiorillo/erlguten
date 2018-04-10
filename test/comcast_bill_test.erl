@@ -292,7 +292,7 @@ run_test()->
     
     eg_block:block(PDF, xml(caption), 310, 235, 240, PtSize9, 12, 20, ragged, TagMap9),    
     {Serialised, _PageNo} = eg_pdf:export(PDF),
-    Pwd = filename:absname(""),
+    _ = filename:absname(""),
     ok = file:write_file("comcast_bill.pdf",[Serialised]),
     eg_pdf:delete(PDF),
     Stop = now(),

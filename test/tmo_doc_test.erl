@@ -79,22 +79,22 @@ file(File_name) ->
     file:write_file(Outfile,[Serialised]),
     eg_pdf:delete(PDF).
 
-file(File_name, section) ->
-    Outfile = filename:rootname(filename:basename(File_name)) ++ ".pdf",
-    Xml = eg_xml_lite:parse_file(File_name),
-    {value, {xml, Doc}} = lists:keysearch(xml, 1, Xml),
-    ToC = doc_toc([Doc]),
-    PDF = eg_pdf:new(),
-    St = #st{doc_info = #doc_info{},
-             toc = ToC,
-             y = 735,
-             page = 1},
-    St5 = main_content(PDF, {document, [], [Doc]}, St),
-%%    io:format("Main Content = done~n",[]),
-    page_numbers(PDF, St5),
-    {Serialised, _PageNo} = eg_pdf:export(PDF),
-    file:write_file(Outfile,[Serialised]),
-    eg_pdf:delete(PDF).
+%% file(File_name, section) ->
+%%     Outfile = filename:rootname(filename:basename(File_name)) ++ ".pdf",
+%%     Xml = eg_xml_lite:parse_file(File_name),
+%%     {value, {xml, Doc}} = lists:keysearch(xml, 1, Xml),
+%%     ToC = doc_toc([Doc]),
+%%     PDF = eg_pdf:new(),
+%%     St = #st{doc_info = #doc_info{},
+%%              toc = ToC,
+%%              y = 735,
+%%              page = 1},
+%%     St5 = main_content(PDF, {document, [], [Doc]}, St),
+%% %%    io:format("Main Content = done~n",[]),
+%%     page_numbers(PDF, St5),
+%%     {Serialised, _PageNo} = eg_pdf:export(PDF),
+%%     file:write_file(Outfile,[Serialised]),
+%%     eg_pdf:delete(PDF).
 
 title_page(PDF, Doc_info, S) ->
     eg_pdf:set_author(PDF, Doc_info#doc_info.author),
@@ -785,7 +785,7 @@ table(PDF, Rows, X, W0, S0) ->
                       [Min_tab_width div Cols + Cols]);
        true -> ok
     end,
-    _Text_width = Col_width - 4 - 1, % leave space for lines + ws
+    _ = Col_width - 4 - 1, % leave space for lines + ws %% text width
 
     %% Sum the total length of text in each column. This gives a
     %% general measure of the size of a column.
